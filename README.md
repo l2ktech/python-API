@@ -14,6 +14,13 @@ The code is based on the `experimental_kinematics` branch of the upstream PAROL 
 | Motion smoothing | `smooth_motion.py`, `test_smooth_motion.py` |
 | Bringup scripts | `run_minimal.py`, `run_headless_linux.py`, `start_parol6.sh` |
 
+## Portfolio / Interview Context
+
+- Portfolio overview: https://notion.l2k.tech:28443/article/interview-portfolio
+- P02 project page: https://notion.l2k.tech:28443/api/report-media/server-upload/notionnext-videos/interview-portfolio/20260708/project-homepages/p02-parol6/index.html
+
+This repository is one public support entry for the P02 PAROL6 control-stack project. It focuses on the headless/API layer; private hardware connection details, calibration logs, safety-gate settings, device identifiers, credentials, and operator logs remain outside this public repository.
+
 Public boundary:
 
 - Do not publish real serial device IDs, local network addresses, operator logs, or hardware calibration data here.
@@ -786,7 +793,7 @@ If running client and server on different computers:
 
 1. **Update Server IP**: In `robot_api.py`, modify the `SERVER_IP` variable:
     ```python
-    SERVER_IP = "192.168.1.100"  # Replace with robot controller's IP
+    SERVER_IP = "192.0.2.10"  # Example address; replace with the robot controller's IP
     SERVER_PORT = 5001  # Default port (usually no change needed)
     ```
 
