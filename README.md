@@ -1,5 +1,26 @@
 # PAROL6 Headless Commander Documentation
 
+## Public Portfolio Summary
+
+This repository is a public support entry for the P02 PAROL6 / ROS2 / MoveIt2 interview project line. It documents a headless Python control/API layer around PAROL6 commander-style operation, with UDP command dispatch, command acknowledgment, inverse-kinematics validation, smooth-motion helpers, and safety monitoring notes.
+
+The code is based on the `experimental_kinematics` branch of the upstream PAROL commander ecosystem and should be read as an adaptation/integration workspace, not as a claim of inventing the PAROL6 robot or the upstream commander software.
+
+| Area | Public evidence in this repo |
+|---|---|
+| Headless controller | `headless_commander.py`, `headless_commander_patched.py`, `headless_commander_fixed.py` |
+| Lightweight API/client | `robot_api.py`, `example_client.py`, `safe_home_client.py` |
+| Robot model and IK fixes | `PAROL6_ROBOT.py`, `parol6_ik_fix.py`, `replace_ikine_LMS.py` |
+| Motion smoothing | `smooth_motion.py`, `test_smooth_motion.py` |
+| Bringup scripts | `run_minimal.py`, `run_headless_linux.py`, `start_parol6.sh` |
+
+Public boundary:
+
+- Do not publish real serial device IDs, local network addresses, operator logs, or hardware calibration data here.
+- Treat `com_port.txt` and local start scripts as environment-specific examples.
+- Always keep physical E-stop access and supervised dry runs when testing against real hardware.
+- This repository is suitable for explaining the control/API design, not for unsupervised production robot operation.
+
 ## 1. Important Notes & Disclaimers
 * **Software Origin**: This control system is based on the `experimental_kinematics` branch of the `PAROL_commander_software` repository. The core communication functions were derived from the `Serial_sender_good_latest.py` file; however, the approach to motion planning has been altered from the original implementation. This system was created by editing the `Commander_minimal_version.py` file, which was used as a base.
 * **Automatic Homing on Startup**: By default, the `headless_commander.py` script will immediately command the robot to home itself upon startup. This is done for convenience but can be disabled. To prevent automatic homing, comment out or delete the corresponding line in `headless_commander.py`.
